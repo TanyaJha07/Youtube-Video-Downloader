@@ -9,6 +9,7 @@ def index():
         link = request.form.get('link')
         print("hello,", link)
         if link:
+            print("inside if")
             try:
                 videos_folder = 'static/videos'
                 for file_name in os.listdir(videos_folder):
@@ -29,10 +30,16 @@ def index():
 
                 message = f"Downloaded '{video_title}' successfully!"
             except Exception as e:
+                print("inside exception ")
+                video_title="some error"
                 message = f"An error occurred: {str(e)}"
         else:
+            print("inside else")
             message = "Please enter a valid YouTube link."
+            video_title= "some errors"
         print("downloaded")
+
+
         return render_template('index.html', message=message,video_file=video_title)
     
     return render_template('index.html')
