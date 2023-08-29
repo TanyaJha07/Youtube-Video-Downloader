@@ -7,6 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         link = request.form.get('link')
+        print("hello,", link)
         if link:
             try:
                 videos_folder = 'static/videos'
